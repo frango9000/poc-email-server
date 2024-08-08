@@ -1,0 +1,58 @@
+version: '3.8'
+services:
+  email-service:
+    build:
+      context: .
+      dockerfile: email-service/Dockerfile
+    ports:
+      - "8081:8081"
+    env_file: .env
+    depends_on:
+      - email-db
+      - rabbitmq
+    restart: 'unless-stopped'
+
+  #  scheduler-service:
+  #    build:
+  #      context: .
+  #      dockerfile: scheduler-service/Dockerfile
+  #    environment:
+  #      - EMAIL_SERVICE_URL=http://email-service:8081
+  #    depends_on:
+  #      - email-service
+  #      - rabbitmq
+
+  #  auth-service:
+  #    build:
+  #      context: .
+  #      dockerfile: auth-service/Dockerfile
+  #    ports:
+  #      - "8082:8082"
+  #    depends_on:
+  #      - email-db
+  #      - rabbitmq
+  #
+  #  notification-service:
+  #    build:
+  #      context: .
+  #      dockerfile: notification-service/Dockerfile
+  #    ports:
+  #      - "8083:8083"
+  #    environment:
+  #      - RABBITMQ_HOST=rabbitmq
+  #    depends_on:
+  #      - rabbitmq
+
+  email-db:
+    env_file: .env
+    image: postgres:15
+    ports:
+      - '5432:5432'
+    restart: 'unless-stopped'
+
+  rabbitmq:
+    image: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    restart: 'unless-stopped'

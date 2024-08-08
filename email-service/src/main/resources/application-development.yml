@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: master
+    password: p@ssw0rd
+  devtools:
+    livereload:
+      enabled: true
+  jpa:
+    show-sql: true
