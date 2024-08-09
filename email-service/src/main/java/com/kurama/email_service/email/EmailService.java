@@ -2,8 +2,6 @@ package com.kurama.email_service.email;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -16,8 +14,8 @@ public class EmailService {
     @NonNull
     private final EmailRepository repository;
 
-    public Page<Email> findAll(Pageable pageable) {
-        return repository.findAll(pageable);
+    public List<Email> findAll() {
+        return repository.findAll();
     }
 
     public Email findById(@NonNull Long emailId) {

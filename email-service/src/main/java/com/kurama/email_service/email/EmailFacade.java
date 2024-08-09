@@ -2,8 +2,6 @@ package com.kurama.email_service.email;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -18,8 +16,8 @@ public class EmailFacade {
     @NonNull
     private final EmailMapper mapper;
 
-    public Page<EmailDTO> findAll(Pageable pageable) {
-        return mapper.mapPage(service.findAll(pageable));
+    public List<EmailDTO> findAll() {
+        return mapper.mapEmailListToEmailDTOList(service.findAll());
     }
 
     public EmailDTO findById(@NonNull Long emailId) {

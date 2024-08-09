@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: spam-service
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+email-service:
+  url: http://email-service:8080

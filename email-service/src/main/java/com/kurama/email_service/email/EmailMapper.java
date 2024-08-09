@@ -4,8 +4,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,7 +39,8 @@ public interface EmailMapper {
             @Mapping(source = "emailTo", target = "to"),
             @Mapping(source = "emailCC", target = "cc"),
             @Mapping(source = "emailBody", target = "body"),
-            @Mapping(source = "state", target = "state")
+            @Mapping(source = "state", target = "state"),
+            @Mapping(target = "lastUpdated", ignore = true)
     })
     Email emailDTOToEmail(EmailDTO emailDTO);
 
@@ -53,13 +52,6 @@ public interface EmailMapper {
         return destinations != null ? destinations.stream()
                 .map(EmailDTO.Destination::email)
                 .collect(Collectors.toList()) : null;
-    }
-
-    default Page<EmailDTO> mapPage(Page<Email> emailPage) {
-        List<EmailDTO> emailDTOs = emailPage.getContent().stream()
-                .map(this::emailToEmailDTO)
-                .collect(Collectors.toList());
-        return new PageImpl<>(emailDTOs, emailPage.getPageable(), emailPage.getTotalElements());
     }
 
     default List<EmailDTO> mapEmailListToEmailDTOList(List<Email> emails) {

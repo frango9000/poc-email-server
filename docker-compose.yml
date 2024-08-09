@@ -10,15 +10,12 @@ services:
       - rabbitmq
     restart: 'unless-stopped'
 
-  #  scheduler-service:
-  #    build:
-  #      context: .
-  #      dockerfile: scheduler-service/Dockerfile
-  #    environment:
-  #      - EMAIL_SERVICE_URL=http://email-service:8081
-  #    depends_on:
-  #      - email-service
-  #      - rabbitmq
+  spam-service:
+    build:
+      context: ./spam-service
+    depends_on:
+      - email-service
+      - rabbitmq
 
   email-db:
     env_file: .env
