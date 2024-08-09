@@ -1,7 +1,10 @@
 package com.kurama.email_service.email;
 
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class EmailDTO {
 
     public Long emailId;

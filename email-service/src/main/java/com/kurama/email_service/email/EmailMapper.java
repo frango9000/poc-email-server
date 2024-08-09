@@ -31,14 +31,28 @@ public interface EmailMapper {
                 .collect(Collectors.toList()) : null;
     }
 
+    default String mapState(Email.State state) {
+        return state != null ? state.name() : null;
+    }
+
+    @Mappings({
+            @Mapping(source = "emailId", target = "id"),
+            @Mapping(source = "emailFrom", target = "sender"),
+            @Mapping(source = "emailTo", target = "to"),
+            @Mapping(source = "emailCC", target = "cc"),
+            @Mapping(source = "emailBody", target = "body"),
+            @Mapping(source = "state", target = "state")
+    })
+    Email emailDTOToEmail(EmailDTO emailDTO);
+
+    default Email.State mapState(String state) {
+        return state != null ? Email.State.valueOf(state) : null;
+    }
+
     default List<String> mapToListOfStrings(List<EmailDTO.Destination> destinations) {
         return destinations != null ? destinations.stream()
                 .map(EmailDTO.Destination::email)
                 .collect(Collectors.toList()) : null;
-    }
-
-    default String mapState(Email.State state) {
-        return state != null ? state.name() : null;
     }
 
     default Page<EmailDTO> mapPage(Page<Email> emailPage) {
@@ -46,5 +60,17 @@ public interface EmailMapper {
                 .map(this::emailToEmailDTO)
                 .collect(Collectors.toList());
         return new PageImpl<>(emailDTOs, emailPage.getPageable(), emailPage.getTotalElements());
+    }
+
+    default List<EmailDTO> mapEmailListToEmailDTOList(List<Email> emails) {
+        return emails.stream()
+                .map(this::emailToEmailDTO)
+                .collect(Collectors.toList());
+    }
+
+    default List<Email> mapEmailDTOListToEmailList(List<EmailDTO> emailDTOs) {
+        return emailDTOs.stream()
+                .map(this::emailDTOToEmail)
+                .collect(Collectors.toList());
     }
 }

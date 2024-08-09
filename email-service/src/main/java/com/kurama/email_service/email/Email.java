@@ -3,6 +3,7 @@ package com.kurama.email_service.email;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
@@ -36,6 +37,19 @@ public class Email {
     @Column(nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private State state;
+
+    @Column(name = "last_updated", nullable = false)
+    private LocalDateTime lastUpdated;
+
+    @PreUpdate
+    protected void onUpdate() {
+        lastUpdated = LocalDateTime.now();
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        lastUpdated = LocalDateTime.now();
+    }
 
     @Getter
     public enum State {
