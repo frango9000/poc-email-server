@@ -1,0 +1,156 @@
+GET http://localhost:8080/email/1
+
+###
+
+GET http://localhost:8080/email
+
+<> 2024-08-09T153326.200.json
+<> 2024-08-09T133732.200.json
+<> 2024-08-09T133701.200.json
+
+###
+
+
+POST http://localhost:8080/email
+Content-Type: application/json
+
+[
+    {
+        "emailFrom": "email1@gmail.com",
+        "emailTo": [
+            {
+                "email": "email2@gmail.com"
+            },
+            {
+                "email": "email3@gmail.com"
+            }
+        ],
+        "emailCC": [
+            {
+                "email": "email4@gmail.com"
+            },
+            {
+                "email": "email5@gmail.com"
+            }
+        ],
+        "emailBody": "This is a test email",
+        "state": "DRAFT"
+    },
+    {
+        "emailFrom": "email6@gmail.com",
+        "emailTo": [
+            {
+                "email": "email7@gmail.com"
+            },
+            {
+                "email": "email8@gmail.com"
+            }
+        ],
+        "emailCC": [
+            {
+                "email": "email9@gmail.com"
+            },
+            {
+                "email": "email10@gmail.com"
+            }
+        ],
+        "emailBody": "This is a test email",
+        "state": "SENT"
+    }
+]
+
+<> 2024-08-09T154517.200.json
+<> 2024-08-09T154516.200.json
+<> 2024-08-09T154514.200.json
+<> 2024-08-09T153334.200.json
+<> 2024-08-09T153333.200.json
+<> 2024-08-09T153332.200.json
+<> 2024-08-09T153331.200.json
+<> 2024-08-09T145732.200.json
+<> 2024-08-09T145731.200.json
+<> 2024-08-09T145730.200.json
+<> 2024-08-09T142350-1.200.json
+<> 2024-08-09T142350.200.json
+<> 2024-08-09T142349.200.json
+<> 2024-08-09T142348.200.json
+<> 2024-08-09T142347-1.200.json
+<> 2024-08-09T142347.200.json
+<> 2024-08-09T142345.200.json
+<> 2024-08-09T133729.200.json
+<> 2024-08-09T133710.200.json
+<> 2024-08-09T133709.200.json
+<> 2024-08-09T133708.200.json
+<> 2024-08-09T125401.200.json
+<> 2024-08-09T123758.200.json
+<> 2024-08-09T123714.200.json
+<> 2024-08-09T121240.200.json
+<> 2024-08-09T121205.200.json
+<> 2024-08-09T121040.200.json
+
+###
+
+
+DELETE http://localhost:8080/email/1
+
+<> 2024-08-09T153824.200.json
+<> 2024-08-09T133715.200.json
+
+###
+
+
+
+###
+PATCH http://localhost:8080/email/25
+Content-Type: application/json
+
+{
+    "emailFrom": "updatedEmail1@gmail.com",
+    "emailTo": [
+        {
+            "email": "updatedEmail2@gmail.com"
+        },
+        {
+            "email": "updatedEmail3@gmail.com"
+        }
+    ],
+    "emailCC": [
+        {
+            "email": "updatedEmail4@gmail.com"
+        },
+        {
+            "email": "updatedEmail5@gmail.com"
+        }
+    ],
+    "emailBody": "This is a test email Updated",
+    "state": "SENT"
+}
+
+<> 2024-08-09T154538.200.json
+<> 2024-08-09T154250.500.json
+<> 2024-08-09T154126.500.json
+<> 2024-08-09T153947.500.json
+<> 2024-08-09T153921.500.json
+<> 2024-08-09T153852.500.json
+<> 2024-08-09T133718.500.json
+<> 2024-08-09T122830.200.json
+<> 2024-08-09T121604.500.json
+<> 2024-08-09T121556.200.json
+<> 2024-08-09T121452.200.json
+<> 2024-08-09T121357.200.json
+<> 2024-08-09T121335.500.json
+<> 2024-08-09T121129.500.json
+<> 2024-08-09T120156.500.json
+
+
+###
+DELETE http://localhost:8080/email
+Content-Type: application/json
+
+[
+    2,
+    3
+]
+
+<> 2024-08-09T133724.200.json
+<> 2024-08-09T123004.200.json
+<> 2024-08-09T122937.405.json

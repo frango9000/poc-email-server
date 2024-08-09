@@ -11,6 +11,7 @@ import static org.springframework.data.web.config.EnableSpringDataWebSupport.Pag
 public class EmailServiceApplication {
 
     public static void main(String[] args) {
+        System.setProperty("spring.amqp.deserialization.trust.all", "true");
         SpringApplication.run(EmailServiceApplication.class, args);
     }
 

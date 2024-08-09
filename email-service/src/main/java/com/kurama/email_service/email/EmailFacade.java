@@ -2,6 +2,7 @@ package com.kurama.email_service.email;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.kurama.email_domain.EmailDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

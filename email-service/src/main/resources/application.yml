@@ -19,3 +19,8 @@ spring:
     properties:
       hibernate:
         default_schema: email
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest

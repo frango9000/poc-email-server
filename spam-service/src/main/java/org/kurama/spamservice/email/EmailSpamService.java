@@ -3,6 +3,8 @@ package org.kurama.spamservice.email;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
+import org.kurama.email_domain.EmailDTO;
+import org.kurama.email_domain.EmailStatusMessage;
 import org.kurama.spamservice.RabbitMQConfig;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -29,6 +31,8 @@ public class EmailSpamService {
             List<Long> spamIds = emails.stream().filter(email -> !email.getState().equals("SPAM") && getSpamEmails().contains(email.getEmailFrom())).map(email -> email.emailId).toList();
             if (!spamIds.isEmpty()) {
                 sendSpamStatusMessage(EmailStatusMessage.builder().status("SPAM").emailIds(spamIds).build());
+            } else {
+                log.info("No spam emails found");
             }
         } catch (Exception e) {
             e.printStackTrace();

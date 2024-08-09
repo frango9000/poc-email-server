@@ -1,4 +1,4 @@
-package com.kurama.email_service.email;
+package org.kurama.email_domain;
 
 import lombok.Data;
 

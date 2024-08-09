@@ -46,7 +46,7 @@ public class EmailService {
 
     public Email update(@NonNull Long emailId, Email email) {
         Email existingEmail = repository.findById(emailId).orElseThrow(() -> new IllegalArgumentException("Email not found"));
-        if (existingEmail.getState() != Email.State.DRAFT) {
+        if (existingEmail.getState() != Email.State.DRAFT && email.getState() != Email.State.SPAM) {
             throw new IllegalArgumentException("Cannot update a non draft email");
         }
         boolean changed = false;

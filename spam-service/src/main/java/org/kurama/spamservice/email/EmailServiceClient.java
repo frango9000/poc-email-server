@@ -1,5 +1,6 @@
 package org.kurama.spamservice.email;
 
+import org.kurama.email_domain.EmailDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
